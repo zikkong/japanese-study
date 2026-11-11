@@ -1,5 +1,5 @@
 // Only public app files are cached. Auth and database responses are never cached.
-const CACHE='haruharu-app-v3.0.0';
+const CACHE='haruharu-app-v3.1.0';
 const ASSETS=['./','./index.html','./config.js','./sync-core.js','./sync.js','./theme.js','./course-data.js','./course.js','./vendor/supabase.js','./fonts/PretendardVariable.woff2'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)));});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('haruharu-app-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
